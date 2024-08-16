@@ -3,6 +3,7 @@ import Image from "next/image";
 import Nav from "./Nav";
 import { useState, useEffect } from "react";
 
+
 const Header: React.FC = () => {
     const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
     const [ismobileNav, setIsmobileNav] = useState<boolean>(false);

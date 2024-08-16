@@ -17,17 +17,18 @@ const dancingScript = Dancing_Script({
 interface Data {
     imgUrl?: any,
     date: string,
-    title: string
+    title: string,
+    classname: string
 }
 
 const data: Data[] = [
-    { imgUrl: fola, date: "Apr-08-2024", title: "test" },
-    { imgUrl: folas, date: "Feb-12-2024", title: "test" },
+    { imgUrl: fola, date: "Apr 08, 2024", title: "test", classname: `${dancingScript.className} text-sm` },
+    { imgUrl: folas, date: "Feb 12, 2024", title: "test", classname: `${dancingScript.className} text-sm` },
     /*{ imgUrl: "", date: "19-11-2024", title: "test" }*/
 ];
 
 const _data: Data[] = [
-    { imgUrl: "", date: "09-07-2024", title: "test" },
+    { imgUrl: "", date: "09-07-2024", title: "test", classname: "" },
 ]
 
 const oswald = Oswald({ subsets: ["latin"], weight: ['400', '700'] });
@@ -65,8 +66,8 @@ const Blog = () => {
 
                     <div className="flex flex-col w-full" data-aos='fade-right'>
                         <div className="grid grid-cols-1 sm:grid-cols-2 h-[520px] gap-4 mb-5">
-                            {data.map(({ title, imgUrl, date }, index) => (
-                                <Article key={index} imgUrl={imgUrl} date={date} title={title} className="min-w-full" />
+                            {data.map(({ title, imgUrl, date, classname }, index) => (
+                                <Article key={index} imgUrl={imgUrl} date={date} title={title} classname={`${classname} min-w-full`} />
                             ))}
                         </div>
 
