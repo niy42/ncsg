@@ -9,6 +9,7 @@ import Carousel from "@/components/shared/Carousel";
 import hand from '@/public/assets/helptrans.png';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 import Statement from "@/components/shared/Statement";
+import Design from "../design";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,26 +35,6 @@ const imageObjects: Props[] = [
   { image: `Every caregiver ${"\n"} deserves a caring community`, title: hand },
   { image: "Your strength inspires us all", title: hand }
 ];
-
-const Design = function ({ rotate }: { rotate: string }) {
-  return (
-    <div className={`${rotate}`}>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-    </div>
-  )
-}
 
 export default function RootLayout({
   children,

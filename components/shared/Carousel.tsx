@@ -22,7 +22,7 @@ const Carousel = ({ images }: imagesProps) => {
     };
 
     useEffect(() => {
-        const interval = setInterval(slideRight, 3000); // Automatically slide to the right every 7 seconds
+        const interval = setInterval(slideRight, 3000); // Automatically slide to the right every 3 seconds
 
         return () => clearInterval(interval); // Cleanup on component unmount
     }, [images.length]);
