@@ -10,13 +10,27 @@ const Article = ({ imgUrl, date, title, classname }: any) => {
     return (
         <div className='relative space-y-6 border p-8 rounded-xl border-gray-700 bg-zinc-900 flex flex-col justify-start items-center h-full'>
             <div className='absolute h-[290px] top-0 w-full'>
-                <Image src={imgUrl} alt="image" layout="fill" objectFit="cover" className="rounded-tr-xl rounded-tl-xl h-full w-full" /> {/* Image fills the container */}
+                <Image src={imgUrl} alt="image" fill objectFit="cover" className="rounded-tr-xl rounded-tl-xl h-full w-full" /> {/* Image fills the container */}
             </div>
-            <div className="-left-2 absolute top-[252px] flex flex-col justify-between w-full h-1/2 p-4"> {/* The text content takes the remaining half */}
-                <p className={`${classname} mb-2 mt-4`}>{date}</p> {/* Date positioned just below the image */}
-                <h3 className={`${manrope.className} text-3xl mb-2`}>{title}</h3> {/* Title below the date */}
-                <p className="mt-auto relative bottom-6 text-sm text-gray-300">Read full article</p> {/* "Continue reading..." positioned at the bottom */}
+            <div className="absolute top-[252px] flex flex-col justify-between w-full h-1/2 p-4">
+                {/* Date positioned just below the image */}
+                <p className={`${classname} mb-2 mt-4`}>{date}</p>
+                {/* Title below the date */}
+                <h3 className={`${manrope.className} text-lg mb-2`}>{title}</h3>
+                {/* Read Full Article Link */}
+                <a
+                    href=""
+                    className="relative -left-5 mt-auto bottom-0 flex items-center justify-between group rounded-lg px-5 py-4 transition-colors hover:text-gray-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <p className="text-sm text-gray-300 cursor-pointer">Read full article</p>
+                    <span className="text-2xl font-semibold transition-transform group-hover:translate-x-2 motion-reduce:transform-none">
+                        &rarr;
+                    </span>
+                </a>
             </div>
+
         </div>
     )
 }

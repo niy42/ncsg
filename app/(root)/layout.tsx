@@ -8,6 +8,7 @@ import Blog from "@/components/shared/Blog";
 import Carousel from "@/components/shared/Carousel";
 import hand from '@/public/assets/helptrans.png';
 import ScrollToTop from '@/components/shared/ScrollToTop';
+import Statement from "@/components/shared/Statement";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -69,6 +70,7 @@ export default function RootLayout({
               {children}
             </main>
             <Brand />
+            <Statement />
             <Blog />
             <Carousel images={imageObjects} />
             <ScrollToTop />

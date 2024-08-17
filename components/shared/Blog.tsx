@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import { Dancing_Script, Oswald } from "next/font/google";
 import folas from '@/public/assets/folas.jpg';
 import fola from '@/public/assets/fola.jpg';
+import { FiActivity } from "react-icons/fi";
 //import WhatsApp from "@/videos/WhatsApp.mp4";
 
 const dancingScript = Dancing_Script({
@@ -22,9 +23,10 @@ interface Data {
 }
 
 const data: Data[] = [
-    { imgUrl: fola, date: "Apr 08, 2024", title: "test", classname: `${dancingScript.className} text-sm` },
-    { imgUrl: folas, date: "Feb 12, 2024", title: "test", classname: `${dancingScript.className} text-sm` },
-    /*{ imgUrl: "", date: "19-11-2024", title: "test" }*/
+    {
+        imgUrl: fola, date: "Apr 08, 2024", title: "Your Child’s After-School Haven: Expert Supervision, Engaging Activities, and Delicious Meals", classname: `${dancingScript.className} text-sm`
+    },
+    { imgUrl: folas, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NGSC’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm` },
 ];
 
 const _data: Data[] = [
@@ -39,8 +41,12 @@ const Blog = () => {
             {/* Initialize AOS */}
             <AosInitializer />
 
-            <section className="relative rounded-2xl bg-gray-800 mx-auto h-full mb-4 px-4 sm:px-6 lg:px-8 max-w-7xl lg:w-full" data-aos="fade-up">
-                <h2 className={`${oswald.className} text-center mb-6 text-gray-400 text-[38px] leading-relaxed`}>Our Activities</h2>
+            <section className="relative rounded-2xl bg-gray-800 mx-auto h-full mb-4 mt-12 px-4 sm:px-6 lg:px-8 max-w-7xl lg:w-full" data-aos="fade-up">
+                <div className="flex justify-center items-center gap-4 p-8">
+                    <h2 className="text-xl font-semibold text-white">Our Activities</h2>
+                    <FiActivity className="text-2xl" />
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full items-center justify-center">
                     <div className="relative flex flex-col space-y-4">
                         <div className="flex flex-col mb-8"> {/* Remove absolute positioning */}
@@ -79,7 +85,7 @@ const Blog = () => {
                     </div>*/}
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     );
 }

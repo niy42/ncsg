@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 const Brand: FC = function () {
     return (
-        <div className="centered-container mb-5">
+        <section className="centered-container">
             <section className='brand'>
                 <div>
                     <Image src='/assets/google.png' alt='google' width={120} height={120} className='cursor-pointer' />
@@ -38,7 +38,7 @@ const Brand: FC = function () {
                     <Image src='/assets/shopify.png' alt='shopify' width={120} height={120} className=' cursor-pointer' />
                 </div>
             </section>
-        </div>
+        </section>
     );
 };
 

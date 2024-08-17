@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Nav from "./Nav";
 import { useState, useEffect } from "react";
@@ -8,6 +9,7 @@ const Header: React.FC = () => {
     const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
     const [ismobileNav, setIsmobileNav] = useState<boolean>(false);
     const [bg, setBg] = useState<boolean>(false);
+    const classname: string = "pointer-events-none outline-none border-none";
 
     useEffect(() => {
         const handleResize = () => {
@@ -83,7 +85,7 @@ const Header: React.FC = () => {
                             className="w-fit items-center justify-end cursor-pointer bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white font-light py-2 px-4 border border-pink-800 rounded-lg shadow-md transition-all duration-200"
                             onClick={() => console.log("Button clicked")}
                         >
-                            <span className="hover:text-gray-300 transition-colors duration-300">Take Action</span>
+                            <span className={`hover:text-gray-300 transition-colors duration-300 bg-transparent ${classname}`}>Take Action</span>
                         </div>
 
                     </div>

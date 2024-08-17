@@ -7,7 +7,7 @@ const ScrollToTop = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 1250) { // Adjust the scroll position threshold as needed
+            if (window.scrollY > 950) { // Adjust the scroll position threshold as needed
                 setVisible(true);
             } else {
                 setVisible(false);
