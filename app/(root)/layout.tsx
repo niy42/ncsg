@@ -10,6 +10,9 @@ import hand from '@/public/assets/helptrans.png';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 import Statement from "@/components/shared/Statement";
 import Design from "../design";
+import Footer from "@/components/shared/Footer";
+import Avatar from "@/components/utils/Avatar";
+import Cta from "@/components/shared/Cta";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -55,6 +58,9 @@ export default function RootLayout({
             <Blog />
             <Carousel images={imageObjects} />
             <ScrollToTop />
+            <Cta />
+            <Footer />
+            <Avatar />
             <Design rotate={'circles'} />
           </SmoothScroll>
         </body>
