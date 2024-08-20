@@ -6,8 +6,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 :root {
@@ -53,7 +53,8 @@ body {
 }
 
 .centered-container {
-    width: 50%; /* Set the desired width for the container */
+    width: 50%; /* Full width for responsiveness */
+    max-width: 1200px; /* Max width for larger screens */
     margin: 0 auto; /* Center the container horizontally */
     overflow: hidden; /* Hide any overflow content */
     position: relative; /* Necessary for positioning the brand component */
@@ -242,7 +243,7 @@ body {
 /* ScrollToTop.css */
 .scroll-to-top {
     position: fixed;
-    bottom: 20px; /* Adjust as needed */
+    bottom: 40%; /* Adjust as needed */
     right: 20px; /* Adjust as needed */
     background-color: #333; /* Background color */
     color: #fff; /* Text color */
@@ -285,6 +286,14 @@ body {
 
 
 @media screen and (min-width: 768px) {
+    .centered-container {
+        width: 50%; /* Full width for responsiveness */
+        max-width: 1200px; /* Max width for larger screens */
+        margin: 4rem auto 0; /* Center the container horizontally */
+        overflow: hidden; /* Hide any overflow content */
+        position: relative; /* Necessary for positioning the brand component */
+        height: 100px; /* Set a height that fits your design */
+    }
     .circles h3 {
         position: fixed;
         display: block;
@@ -294,5 +303,53 @@ body {
         background: rgba(210, 225, 243, 0.2);
         animation: animate 25s linear infinite;
         bottom: -150px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .centered-container {
+        width: 50%; /* Full width for responsiveness */
+        max-width: 1200px; /* Max width for larger screens */
+        margin: 0 auto 0; /* Top, right-left, bottom */
+        overflow: hidden; /* Hide any overflow content */
+        position: relative; /* Necessary for positioning the brand component */
+        height: 100px; /* Set a height that fits your design */
+    }
+
+    .scroll-to-top {
+        position: fixed;
+        bottom: 40%; /* Adjust as needed */
+        right: 20px; /* Adjust as needed */
+        background-color: #333; /* Background color */
+        color: #fff; /* Text color */
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 24px;
+        opacity: 0.7;
+        transform: scale(0.8); /* Scale down initially */
+        transition: opacity 0.3s, transform 0.3s; /* Smooth transitions for opacity and transform */
+    }
+
+    /* Apply animation when the button becomes visible */
+    .scroll-to-top {
+        animation: moveUp 1s ease-out; /* Adjust duration and timing as needed */
+    }
+
+}
+
+@media screen and (min-width: 640px) and (max-width: 768px) {
+    .centered-container {
+        width: 50%; /* Full width for responsiveness */
+        max-width: 1200px; /* Max width for larger screens */
+        margin: 4.5rem auto 0; /* Center the container horizontally */
+        overflow: hidden; /* Hide any overflow content */
+        position: relative; /* Necessary for positioning the brand component */
+        height: 100px; /* Set a height that fits your design */
     }
 }

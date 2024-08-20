@@ -64,7 +64,7 @@ const Header: React.FC = () => {
                 </nav>
             ) : (
                 <nav
-                    className={`fixed flex w-full py-[0.4rem] pt-[0rem] justify-between items-center px-[4.5rem] md:px-[3.5rem] lg:px-[5.5rem] md:text-[0.85rem] lg:text-[0.95rem] z-50 transition-all duration-300 ${isNavVisible ? "opacity-100" : "opacity-0"
+                    className={`fixed container flex w-full py-[0.4rem] pt-[0rem] justify-between items-center px-[4.5rem] md:px-[3.5rem] lg:px-[5.5rem] md:text-[0.85rem] lg:text-[0.95rem] z-50 transition-all duration-300 ${isNavVisible ? "opacity-100" : "opacity-0"
                         }`}
                     style={{ display: isNavVisible ? "flex" : "none" }}
                 >

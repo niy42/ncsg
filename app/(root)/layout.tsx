@@ -14,7 +14,6 @@ import Footer from "@/components/shared/Footer";
 import Avatar from "@/components/utils/Avatar";
 import Cta from "@/components/shared/Cta";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -47,10 +46,10 @@ export default function RootLayout({
   return (
     <>
       <html lang="en">
-        <body className={`${inter.className} flex flex-col 2xl:max-w-[1470px] relative`}>
+        <body className={`${inter.className} min-h-screen flex flex-col w-full max-w-[100%] xl:max-w-[1470px] 2xl:max-w-[1600px] relative`}>
           <Header />
           <SmoothScroll>
-            <main className="overflow-x-clip h-screen items-center top-[15rem] 2xl:pb-0 mb-[10rem] relative">
+            <main className="overflow-x-clip items-center top-[5rem] sm:top-[10rem] lg:top-[15rem] mb-[4rem] lg:mb-[10rem] relative">
               {children}
             </main>
             <Brand />

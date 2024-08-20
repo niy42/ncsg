@@ -29,7 +29,7 @@ const Carousel = ({ images }: imagesProps) => {
 
 
     return (
-        <div className="overflow-hidden relative flex w-full mx-auto max-w-[800px] h-[400px] mb-20 bg-opacity-100 mt-5">
+        <div className="overflow-hidden relative flex w-full mx-auto max-w-[800px] h-[400px] mb-20 bg-opacity-100">
             <div className="relative w-full h-full">
 
                 {images.map(({ image, title }: { image?: string, title?: any }, index) => {

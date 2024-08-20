@@ -30,7 +30,7 @@ const ScrollToTop = () => {
     return (
         visible && (
             <button
-                className="scroll-to-top"
+                className="scroll-to-top z-20 overflow-hidden"
                 onClick={scrollToTop}
                 aria-label="Scroll to top"
             >

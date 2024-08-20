@@ -1,4 +1,4 @@
-"use client"; // This is a client-side component
+"use client";
 
 import { useEffect } from "react";
 import Aos from "aos";

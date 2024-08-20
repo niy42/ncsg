@@ -1,14 +1,14 @@
 "use client";
 
-//import { styles } from '@/styles/styles';
 import { IoIosChatboxes } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 
-const chatWords: Array<string> = ["Hey! Got inquiries?", "We've got you", "Let's chat"];
+const chatWords: Array<string> = ["Hey! Got inquiries?", "We've got you!", "Let's chat"];
+
 export const styles = {
     chatWithMeButton: {
         cursor: 'pointer',
-        boxShadow: '0 0 16 6 rgba(0, 0, 0, 0.33)',
+        boxShadow: '0 0 16px rgba(0, 0, 0, 0.33)',
         borderRadius: '50%',
         width: '50px',
         height: '50px',
@@ -43,8 +43,9 @@ const Avatar = () => {
 
     useEffect(() => {
         // Inject keyframes for animation
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(`
+        const styleSheet = document.createElement('style');
+        styleSheet.type = 'text/css';
+        styleSheet.innerHTML = `
             @keyframes fadeInBounce {
                 0% {
                     opacity: 0;
@@ -59,20 +60,22 @@ const Avatar = () => {
                     transform: scale(1);
                 }
             }
-        `, styleSheet.cssRules.length);
+        `;
+        document.head.appendChild(styleSheet);
 
         // Set up interval for changing chat words
         const interval = setInterval(changeChatWords, 2000); // Change words every 2 seconds
 
         // Handle scroll event to show/hide component
         const handleScroll = () => {
-            setIsVisible(window.scrollY > 1600);
+            setIsVisible(window.scrollY > 200);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
             clearInterval(interval); // Clear the interval on component unmount
+            document.head.removeChild(styleSheet); // Clean up injected style
         };
     }, []);
 
@@ -80,14 +83,16 @@ const Avatar = () => {
         <>
             {isVisible && (
                 <div
-                    className={`fixed flex flex-col space-y-2 items-center transition-opacity duration-500 ease-in-out justify-center bottom-12 right-16 ${isVisible ? 'opacity-100' : ''}`}
+                    className={`fixed z-20 group flex flex-col items-center transition-opacity duration-500 ease-in-out justify-center bottom-28 right-12 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                     style={isVisible ? styles.visible : styles.hidden}
                 >
-                    <div className='absolute w-full whitespace-nowrap -top-[20px] right-14'>
-                        {chatWords[currentIndex]}
-                    </div>
-                    <div className='bg-transparent' style={styles.chatWithMeButton}>
-                        <IoIosChatboxes style={styles.icon} />
+                    <div className="group group-hover:scale-100 transition-all duration-300 ease-in group-hover:bg-gray-600 group-hover:rounded-full relative">
+                        <div className='absolute w-full whitespace-nowrap opacity-0 group-hover:opacity-100 -top-[30px] right-14'>
+                            {chatWords[currentIndex]}
+                        </div>
+                        <div className='bg-gray-900 border border-zinc-600' style={styles.chatWithMeButton}>
+                            <IoIosChatboxes style={styles.icon} />
+                        </div>
                     </div>
                 </div>
             )}
