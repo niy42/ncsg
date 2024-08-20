@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Nav from "./Nav";
 import { useState, useEffect } from "react";
-
+import { AiOutlineClose } from "react-icons/ai";
+import { HiMenuAlt4 } from "react-icons/hi";
 
 const Header: React.FC = () => {
     const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
     const [ismobileNav, setIsmobileNav] = useState<boolean>(false);
     const [bg, setBg] = useState<boolean>(false);
+    const [toggleMenu, setToggleMenu] = useState<boolean>(true);
     const classname: string = "pointer-events-none outline-none border-none";
 
     useEffect(() => {
@@ -51,7 +53,7 @@ const Header: React.FC = () => {
     return (
         <header className="relative flex">
             {ismobileNav ? (
-                <nav className="w-full p-4 justify-between items-center">
+                <nav className="w-full flex p-4 justify-between items-center">
                     <div>
                         <Image
                             src="/ncsg.png"
@@ -60,6 +62,12 @@ const Header: React.FC = () => {
                             height={130}
                             className="cursor-pointer"
                         />
+                    </div>
+                    <div>
+                        {toggleMenu ?
+                            <HiMenuAlt4 fontSize={24} onClick={() => setToggleMenu(false)} className="text-white cursor pointer" /> :
+                            <AiOutlineClose fontSize={24} onClick={() => setToggleMenu(true)} className="text-white cursor pointer" />
+                        }
                     </div>
                 </nav>
             ) : (
