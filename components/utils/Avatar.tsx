@@ -66,9 +66,13 @@ const Avatar = () => {
         // Set up interval for changing chat words
         const interval = setInterval(changeChatWords, 2000); // Change words every 2 seconds
 
-        // Handle scroll event to show/hide component
+        // Handle scroll event to show/hide component based on device screen
         const handleScroll = () => {
-            setIsVisible(window.scrollY > 200);
+            if (window.innerWidth > 768) {
+                setIsVisible(window.scrollY > 2500);
+            } else {
+                setIsVisible(window.scrollY > 4000);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -83,7 +87,7 @@ const Avatar = () => {
         <>
             {isVisible && (
                 <div
-                    className={`fixed z-20 group flex flex-col items-center transition-opacity duration-500 ease-in-out justify-center bottom-28 right-12 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                    className={`fixed z-20 group flex flex-col items-center transition-opacity duration-500 ease-in-out justify-center bottom-28 right-2 sm:right-6 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                     style={isVisible ? styles.visible : styles.hidden}
                 >
                     <div className="group group-hover:scale-100 transition-all duration-300 ease-in group-hover:bg-gray-600 group-hover:rounded-full relative">

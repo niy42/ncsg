@@ -25,9 +25,9 @@ const navlinksthird: Array<Navlinks> = [
     { name: "Support NCSG", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
 ];
 
-function Nav({ fixedBg, bgColor }: { fixedBg: boolean, bgColor: boolean }) {
+function Nav({ fixedBg }: { fixedBg: boolean }) {
     return (
-        <nav className={`lg:w-full max-md:w-[20rem] flex items-center gap-[2rem] justify-between ${fixedBg ? "w-full dark:border-neutral-700 " : "bg-transparent"} duration-200 ${bgColor ? 'bg-gray-700 flex-1 rounded-full px-[3rem] py-[0.6rem] transition-colors duration-300' : 'bg-transparent'}`}>
+        <nav className={`lg:w-full max-md:w-[20rem] flex items-center gap-[2rem] justify-between ${fixedBg ? "w-full dark:border-neutral-700 " : "bg-transparent"} duration-200 `}> {/*${bgColor ? 'bg-gray-700 flex-1 rounded-full px-[3rem] py-[0.6rem] transition-colors duration-300' : 'bg-transparent'}*/}
             <Link href={""} className='whitespace-nowrap text-white hover:text-gray-300 transition-colors duration-300'>
                 Home
             </Link>

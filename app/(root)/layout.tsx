@@ -13,6 +13,9 @@ import Design from "../design";
 import Footer from "@/components/shared/Footer";
 import Avatar from "@/components/utils/Avatar";
 import Cta from "@/components/shared/Cta";
+import { group1, group, onions, food1 } from "@/public/assets";
+import Roller from "@/components/shared/Roller";
+import { StaticImageData } from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +41,21 @@ const imageObjects: Props[] = [
   { image: "Your strength inspires us all", title: hand }
 ];
 
+export type Photos = {
+  name: StaticImageData,
+};
+
+export type groupPhotos = {
+  photos: Array<Photos>
+}
+
+const pics: Photos[] = [
+  { name: group },
+  { name: group1 },
+  { name: onions },
+  { name: food1 }
+]
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,12 +67,13 @@ export default function RootLayout({
         <body className={`${inter.className} min-h-screen flex flex-col w-full max-w-[100%] xl:max-w-[1470px] 2xl:max-w-[1600px] relative`}>
           <Header />
           <SmoothScroll>
-            <main className="overflow-x-clip items-center top-[5rem] sm:top-[10rem] lg:top-[15rem] mb-[4rem] lg:mb-[10rem] relative">
+            <main className="overflow-x-clip items-center top-[10rem] sm:top-[10rem] lg:top-[15rem] mb-[4rem] lg:mb-[10rem] relative">
               {children}
             </main>
             <Brand />
             <Statement />
             <Blog />
+            <Roller photos={pics} />
             <Carousel images={imageObjects} />
             <ScrollToTop />
             <Cta />
