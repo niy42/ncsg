@@ -5,23 +5,35 @@ import Nav from "./Nav";
 import { useEffect, useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Link from "next/link";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
-interface MobNav {
+interface SubNavLink {
     title: string;
     url: string;
 }
 
+interface MobNav {
+    title: string;
+    url: string;
+    subNavLinks: SubNavLink[];
+}
+
 const mobileNav: MobNav[] = [
-    { title: "test1", url: "" },
-    { title: "test2", url: "" },
-    { title: "test3", url: "" },
-    { title: "test4", url: "" },
+    { title: "About", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
+    { title: "Services", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
+    { title: "Offerings", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
 ];
 
 const Header: React.FC = () => {
     const [toggleMenu, setToggleMenu] = useState<boolean>(false); // Default to hidden
     const [bg, setBg] = useState<boolean>(false);
     const [showBorder, setShowBorder] = useState<boolean>(false);
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    // Handle toggle menu
+    const handleToggleMenu = (index: number) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
 
     // Handle scroll event to change background color of navbar
     const handleScroll = () => {
@@ -71,13 +83,39 @@ const Header: React.FC = () => {
                         )}
                     </div>
                     <div className={`flex flex-col items-end justify-start h-fit mobile-nav ${toggleMenu ? "active" : ""} ${showBorder ? "show-border" : ""}`}>
-                        {mobileNav.map(({ title, url }, index) => (
-                            <div key={index} className="py-2 px-4">
-                                <Link legacyBehavior href={url}>
-                                    <a className="block">{title}</a>
-                                </Link>
+                        <div className="py-3 px-5 hover:bg-gray-700 w-full rounded-xl">
+                            <Link legacyBehavior href={''} >
+                                <a className="block text-xs font-light hover:text-gray-400">Home</a>
+                            </Link>
+                        </div>
+                        {mobileNav.map(({ title, url, subNavLinks }, index) => (
+                            <div key={index} className="py-3 px-5 hover:bg-gray-700 w-full rounded-xl">
+                                <a
+                                    onClick={() => handleToggleMenu(index)}
+                                    className="flex w-full justify-between items-center text-white hover:text-gray-300 transition-colors duration-300 whitespace-nowrap cursor-pointer"
+                                >
+                                    <span className="block text-xs font-light hover:text-gray-400">{title}</span>
+                                    <span>
+                                        {openIndex === index ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
+                                    </span>
+                                </a>
+                                {openIndex === index && (
+                                    <div className="pl-4 mt-2 transition-all duration-300 ease-out">
+                                        {subNavLinks.map(({ title, url }, subIndex) => (
+                                            <Link legacyBehavior key={subIndex} href={url}>
+                                                <a className="block text-sm text-gray-300 hover:text-gray-100 py-1">{title}</a>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         ))}
+                        <div className="py-3 px-5 w-full items-center justify-end cursor-pointer bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white font-light border border-pink-800 rounded-lg shadow-md transition-all duration-200">
+                            <Link legacyBehavior href={''} >
+                                <a className="block text-xs font-light hover:text-gray-400"><span className="hover:text-gray-300 transition-colors duration-300 bg-transparent">Take Action</span></a>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
 

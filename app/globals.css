@@ -437,12 +437,10 @@ body {
   }
 }
 
-
-/* Base styles for the mobile nav menu */
 /* Base styles for the mobile nav menu */
 .mobile-nav {
   position: fixed; /* Use fixed positioning to cover the screen */
-  top: -100%; /* Initially hide it off the screen from the top */
+  bottom: -100%; /* Initially hide it off the screen from the top */
   right: 72px;
   width: 100vw; /* Full viewport width for the mobile menu */
   max-width: 120px; /* Adjust width as needed */
@@ -451,18 +449,39 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(0); /* No vertical translation by default */
-  transition: top 0.5s ease-in-out; /* Transition for sliding effect */
+  transition: bottom 0.5s ease-in-out; /* Transition for sliding effect */
   z-index: 10;
 }
-
-/* When active, slide it into view */
-.mobile-nav.active {
-  top: 120px; /* Slide into view */
-}
-
 
 /* Optional: Add a border if showBorder is true */
 .mobile-nav.show-border {
   border: 2px dashed #4a5568; /* Match your border color */
 }
+
+/* Default state when active */
+.mobile-nav.active {
+  bottom: 660px; /* Default value for larger screens */
+}
+
+/* For screens 600px and below */
+@media screen and (max-width: 600px) {
+  .mobile-nav.active {
+    bottom: 500px; /* Adjusted for smaller screens */
+  }
+}
+
+/* For screens 450px and below */
+@media screen and (max-width: 450px) {
+  .mobile-nav.active {
+    bottom: 500px; /* Fine-tuned for smaller screens */
+  }
+}
+
+/* For screens 375px and below */
+@media screen and (max-width: 375px) {
+  .mobile-nav.active {
+    bottom: 400px; /* Adjusted for very narrow screens */
+  }
+}
+
 

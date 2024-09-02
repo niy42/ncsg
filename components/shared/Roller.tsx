@@ -38,8 +38,8 @@ export default function Roller({ photos, donations }: groupPhotos) {
                     </div>
 
                     <div data-aos="fade-right" className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        <div className="flex flex-col gap-4">
-                            <p className="text-white text-lg md:text-xl">Special Hangout - NCSG</p>
+                        <div className="flex flex-col gap-2">
+                            <p className="text-white text-base sm:text-lg md:text-xl">Special Hangout - NCSG</p>
                             <div className="grid grid-cols-1 gap-4">
                                 {photos.map(({ name }, index) => (
                                     <div key={index} className="border-4 border-gray-400 border-dashed relative w-full h-0 pb-[100%] overflow-hidden rounded-lg">
@@ -54,8 +54,8 @@ export default function Roller({ photos, donations }: groupPhotos) {
                                 ))}
                             </div>
                         </div>
-                        <div className="flex flex-col gap-4">
-                            <p className="text-white text-lg md:text-xl">Donations from Fareshare</p>
+                        <div className="flex flex-col gap-2">
+                            <p className="text-white text-base sm:text-lg md:text-xl">Donations from Fareshare</p>
                             <div className="grid grid-cols-1 gap-4">
                                 {donations.map(({ name }, index) => (
                                     <div key={index} className="border-4 border-gray-400 border-dashed relative w-full h-0 pb-[100%] overflow-hidden rounded-lg">
