@@ -13,7 +13,7 @@ import Design from "../design";
 import Footer from "@/components/shared/Footer";
 import Avatar from "@/components/utils/Avatar";
 import Cta from "@/components/shared/Cta";
-import { group1, group, onions, food1 } from "@/public/assets";
+import { group1, group, onions, food1, strawb } from "@/public/assets";
 import Roller from "@/components/shared/Roller";
 import { StaticImageData } from "next/image";
 
@@ -46,14 +46,18 @@ export type Photos = {
 };
 
 export type groupPhotos = {
-  photos: Array<Photos>
+  photos: Array<Photos>,
+  donations: Photos[]
 }
 
 const pics: Photos[] = [
   { name: group },
   { name: group1 },
+]
+
+const food: Photos[] = [
   { name: onions },
-  { name: food1 }
+  { name: food1 },
 ]
 
 export default function RootLayout({
@@ -73,7 +77,7 @@ export default function RootLayout({
             <Brand />
             <Statement />
             <Blog />
-            <Roller photos={pics} />
+            <Roller photos={pics} donations={food} />
             <Carousel images={imageObjects} />
             <ScrollToTop />
             <Cta />

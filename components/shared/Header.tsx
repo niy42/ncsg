@@ -55,19 +55,21 @@ const Header: React.FC = () => {
 
                 {/* Mobile Menu Toggle */}
                 <div className="md:hidden relative">
-                    {toggleMenu ? (
-                        <RiCloseLine
-                            fontSize={26}
-                            onClick={() => setToggleMenu(false)}
-                            className="text-white cursor-pointer"
-                        />
-                    ) : (
-                        <RiMenu3Line
-                            fontSize={26}
-                            onClick={() => setToggleMenu(true)}
-                            className="text-white cursor-pointer"
-                        />
-                    )}
+                    <div className="absolute top-[-18px] right-4 ">
+                        {toggleMenu ? (
+                            <RiCloseLine
+                                fontSize={26}
+                                onClick={() => setToggleMenu(false)}
+                                className="text-white cursor-pointer"
+                            />
+                        ) : (
+                            <RiMenu3Line
+                                fontSize={26}
+                                onClick={() => setToggleMenu(true)}
+                                className="text-white cursor-pointer"
+                            />
+                        )}
+                    </div>
                     <div className={`flex flex-col items-end justify-start h-fit mobile-nav ${toggleMenu ? "active" : ""} ${showBorder ? "show-border" : ""}`}>
                         {mobileNav.map(({ title, url }, index) => (
                             <div key={index} className="py-2 px-4">
