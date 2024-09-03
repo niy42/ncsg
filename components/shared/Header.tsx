@@ -19,9 +19,9 @@ interface MobNav {
 }
 
 const mobileNav: MobNav[] = [
-    { title: "About", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
-    { title: "Services", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
-    { title: "Offerings", url: "", subNavLinks: [{ title: "test", url: "" }, { title: "test", url: "" }, { title: "test", url: "" }] },
+    { title: "About", url: "", subNavLinks: [{ title: "Volunteer", url: "" }, { title: "Meet the Team", url: "" }, { title: "Our Story", url: "" }] },
+    { title: "Services", url: "", subNavLinks: [{ title: "Health & Wellness", url: "" }, { title: "Outreach", url: "" }, { title: "Upskilling and Courses", url: "" }] },
+    { title: "Offerings", url: "", subNavLinks: [{ title: "News", url: "" }, { title: "Support Groups", url: "" }, { title: "Support NCSG", url: "" }] },
 ];
 
 const Header: React.FC = () => {
@@ -103,7 +103,7 @@ const Header: React.FC = () => {
                                     <div className="pl-4 mt-2 transition-all duration-300 ease-out">
                                         {subNavLinks.map(({ title, url }, subIndex) => (
                                             <Link legacyBehavior key={subIndex} href={url}>
-                                                <a className="block text-sm text-gray-300 hover:text-gray-100 py-1">{title}</a>
+                                                <a className="block text-xs text-gray-300 hover:text-gray-100 py-1 whitespace-nowrap">{title}</a>
                                             </Link>
                                         ))}
                                     </div>

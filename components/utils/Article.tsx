@@ -1,12 +1,13 @@
 import { Manrope } from "next/font/google"
 import Image from "next/image"
+import Link from "next/link";
 
 const manrope = Manrope({
     subsets: ['latin'],
     weight: ["600", "700"]
 });
 
-const Article = ({ imgUrl, date, title, classname }: any) => {
+const Article = ({ imgUrl, date, title, classname, href }: any) => {
     return (
         <div className='absolute w-full md:relative border p-8 rounded-xl border-gray-700 bg-zinc-900 flex flex-col justify-start items-center h-full'>
             <div className='absolute h-[290px] top-0 w-full'>
@@ -19,7 +20,7 @@ const Article = ({ imgUrl, date, title, classname }: any) => {
                 <h3 className={`${manrope.className} text-lg mb-2`}>{title}</h3>
                 {/* Read Full Article Link */}
                 <a
-                    href=""
+                    href={href}
                     className="relative flex items-center justify-between group rounded-lg px-4 py-3 md:px-5 md:py-4 transition-colors hover:text-gray-400"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -29,6 +30,7 @@ const Article = ({ imgUrl, date, title, classname }: any) => {
                         &rarr;
                     </span>
                 </a>
+
 
             </div>
 

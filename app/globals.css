@@ -443,7 +443,7 @@ body {
   bottom: -100%; /* Initially hide it off the screen from the top */
   right: 72px;
   width: 100vw; /* Full viewport width for the mobile menu */
-  max-width: 120px; /* Adjust width as needed */
+  max-width: 200px; /* Adjust width as needed */
   background-color: #2d3748; /* Match your bg-gray-800 color */
   color: white;
   border-radius: 12px;

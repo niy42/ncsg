@@ -20,12 +20,13 @@ interface Data {
     imgUrl?: any,
     date: string,
     title: string,
-    classname: string
+    classname: string,
+    href: string,
 }
 
 const data: Data[] = [
-    { imgUrl: fola, date: "Apr 08, 2024", title: "Your Child’s After-School Haven: Expert Supervision, Engaging Activities, and Delicious Meals", classname: `${dancingScript.className} text-sm` },
-    { imgUrl: folas, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NCSG’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm` },
+    { imgUrl: fola, date: "Apr 08, 2024", title: "Your Child’s After-School Haven: Expert Supervision, Engaging Activities, and Delicious Meals", classname: `${dancingScript.className} text-sm`, href: "/deliciouscare" },
+    { imgUrl: folas, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NCSG’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm`, href: "/healthcare" },
 ];
 
 const Blog = () => {
@@ -76,8 +77,8 @@ const Blog = () => {
                         <div className="flex flex-col w-full" data-aos='fade-right'>
                             {/*Large Screens*/}
                             <div className="grid max-grid-cols-1 max-md:hidden sm:grid-cols-2 h-[520px] max-lg:gap-2 gap-4 mb-5">
-                                {data.map(({ title, imgUrl, date, classname }, index) => (
-                                    <Article key={index} imgUrl={imgUrl} date={date} title={title} classname={`${classname} min-w-full`} />
+                                {data.map(({ title, imgUrl, date, classname, href }, index) => (
+                                    <Article key={index} imgUrl={imgUrl} date={date} title={title} classname={`${classname} min-w-full`} href={href} />
                                 ))}
                             </div>
                             {/*Small Screens*/}
@@ -88,6 +89,7 @@ const Blog = () => {
                                     date={data[currentIndex].date}
                                     title={data[currentIndex].title}
                                     classname={`${data[currentIndex].classname} min-w-full`}
+                                    href={data[currentIndex].href}
                                 />
                             </div>
                         </div>

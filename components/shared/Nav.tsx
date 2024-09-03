@@ -16,7 +16,7 @@ const navlinksfirst: Array<Navlinks> = [
 const navlinkssecond: Array<Navlinks> = [
     { name: "Health & Wellness", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
     { name: "Outreach", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
-    { name: "Upskilling & courses", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
+    { name: "Upskilling & Courses", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
 ];
 
 const navlinksthird: Array<Navlinks> = [
