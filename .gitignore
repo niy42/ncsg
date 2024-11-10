@@ -50,3 +50,6 @@ videos/*
 public/_next-video
 
 .vercel
+
+# Local Netlify folder
+.netlify
