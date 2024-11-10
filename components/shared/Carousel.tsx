@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react';
 import type { imagesProps } from '@/app/(root)/layout';
 import { Oswald } from 'next/font/google';
 import { SlArrowLeft, SlArrowLeftCircle, SlArrowRight, SlArrowRightCircle } from 'react-icons/sl';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 const oswald = Oswald({
     subsets: ["latin"],
     weight: "400",
-})
+});
+
 const Carousel = ({ images }: imagesProps) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -29,20 +30,20 @@ const Carousel = ({ images }: imagesProps) => {
 
 
     return (
-        <div className="overflow-hidden -mt-16 sm:-mt-10 relative flex w-full mx-auto max-w-[800px] h-[400px] mb-20 bg-opacity-100">
+        <div className="overflow-hidden -mt-16 sm:-mt-10 relative flex w-full mx-auto max-w-[800px] h-[400px] sm:mb-20 bg-opacity-100">
             <div className="relative w-full h-full">
 
-                {images.map(({ image, title }: { image?: string, title?: any }, index) => {
+                {images.map(({ image, title }: { title?: string, image: StaticImageData }, index) => {
                     return (
                         <div
                             key={index}
                             className={`${index === currentIndex ? 'carousel_card carousel_card-active' : 'carousel_card'} border border-zinc-800 bg-slate-700 min-w-full min-h-full relative`}
                         >
-                            <p className={`flex px-4 sm:px-6 absolute inset-0 text-center font-extralight text-4xl items-center justify-center break-words whitespace-pre-wrap leading-relaxed ${oswald.className}`}>{image}</p>
+                            <p className={`flex px-4 sm:px-6 absolute inset-0 text-center font-extralight text-4xl items-center justify-center break-words whitespace-pre-wrap leading-relaxed ${oswald.className}`}>{title}</p>
 
                             <div className="bottom-[-2] sm:left-2 sm:bottom-0 flex absolute w-full h-full bg-black bg-opacity-10 items-end p-10 px-8 text-xl font-bold">
                                 { /*<h2 className='text-[30px] text-gray-300 font-bold'>{title}</h2>*/}
-                                <Image src={title} alt="image" className='bottom-[-2] w-12 h-12 md:w-20 md:h-20 bg-gray-600 rounded-full' />
+                                <Image src={image} alt="image" className='bottom-[-2px] w-12 h-12 md:w-20 md:h-20 bg-gray-600 rounded-full' />
                             </div>
                         </div>
                     )
@@ -60,7 +61,7 @@ const Carousel = ({ images }: imagesProps) => {
                 >
                     <SlArrowRightCircle />
                 </div>
-                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex">
+                <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 flex">
                     {images.map((_, index) => (
                         <div
                             key={index}

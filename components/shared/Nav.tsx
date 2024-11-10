@@ -8,21 +8,21 @@ type Navlinks = {
 }
 
 const navlinksfirst: Array<Navlinks> = [
-    { name: "Our Story", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
+    { name: "Our Story", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] rounded-b-[10px] duration-200 whitespace-nowrap" },
     { name: "Meet the Team", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
-    { name: "Volunteer", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
+    { name: "Volunteer", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] rounded-t-[10px] duration-200 whitespace-nowrap" }
 ];
 
 const navlinkssecond: Array<Navlinks> = [
-    { name: "Health & Wellness", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
+    { name: "Health & Wellness", url: "/test", classname: "rounded-t-[10px] px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
     { name: "Outreach", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
-    { name: "Upskilling & Courses", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
+    { name: "Upskilling & Courses", url: "/test", classname: "rounded-b-[10px] px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
 ];
 
 const navlinksthird: Array<Navlinks> = [
-    { name: "News", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
+    { name: "News", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] rounded-t-[10px] duration-200 whitespace-nowrap" },
     { name: "Support groups", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" },
-    { name: "Support NCSG", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] duration-200 whitespace-nowrap" }
+    { name: "Support NCSG", url: "/test", classname: "px-[1rem] py-[0.7rem] hover:bg-[#171719] rounded-b-[10px] duration-200 whitespace-nowrap" }
 ];
 
 function Nav({ fixedBg }: { fixedBg: boolean }) {
@@ -41,7 +41,7 @@ function Nav({ fixedBg }: { fixedBg: boolean }) {
                         <FaSortUp className="group-hover:hidden" />
                     </span>
                 </Link>
-                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col-reverse bg-[#303030] rounded-[5px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
+                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col-reverse bg-[#303030] rounded-[10px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
                     {navlinksfirst.map(({ name, url, classname }: Navlinks, index) => (
                         <Link
                             href={url}
@@ -62,7 +62,7 @@ function Nav({ fixedBg }: { fixedBg: boolean }) {
                         <FaSortUp className="group-hover:hidden" />
                     </span>
                 </Link>
-                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col bg-[#303030] rounded-[5px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
+                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col bg-[#303030] rounded-[10px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
                     {navlinkssecond.map(({ name, url, classname }: Navlinks, index) => (
                         <Link
                             href={url}
@@ -83,7 +83,7 @@ function Nav({ fixedBg }: { fixedBg: boolean }) {
                         <FaSortUp className="group-hover:hidden" />
                     </span>
                 </Link>
-                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col bg-[#303030] rounded-[5px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
+                <div className='absolute -left-4 top-[1.5rem] opacity-0 invisible group-hover:visible group-hover:opacity-100 flex flex-col bg-[#303030] rounded-[10px] shadow-lg transition-all translate-y-[1.5rem] group-hover:translate-y-[2.5rem] transform duration-300 ease-out'>
                     {navlinksthird.map(({ name, url, classname }: Navlinks, index) => (
                         <Link
                             href={url}

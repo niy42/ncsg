@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 };
 
 export type Props = {
-  image: string,
-  title: any
+  image: StaticImageData,
+  title: string
 }
 
 export type imagesProps = {
@@ -34,11 +34,11 @@ export type imagesProps = {
 }
 
 const imageObjects: Props[] = [
-  { image: `Caring for others ${"\n"} is the greatest gift you can give`, title: hand },
-  { image: "Together, we uplift those who care", title: hand },
-  { image: "Empathy and support build stronger communities", title: hand },
-  { image: `Every caregiver ${"\n"} deserves a caring community`, title: hand },
-  { image: "Your strength inspires us all", title: hand }
+  { title: `Caring for others ${"\n"} is the greatest gift you can give`, image: hand },
+  { title: "Together, we uplift those who care", image: hand },
+  { title: "Empathy and support build stronger communities", image: hand },
+  { title: `Every caregiver ${"\n"} deserves a caring community`, image: hand },
+  { title: "Your strength inspires us all", image: hand }
 ];
 
 export type Photos = {

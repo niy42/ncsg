@@ -11,7 +11,7 @@ const Article = ({ imgUrl, date, title, classname, href }: any) => {
     return (
         <div className='absolute w-full md:relative border p-8 rounded-xl border-gray-700 bg-zinc-900 flex flex-col justify-start items-center h-full'>
             <div className='absolute h-[290px] top-0 w-full'>
-                <Image src={imgUrl} alt="image" fill style={{ objectFit: "cover" }} className="rounded-tr-xl rounded-tl-xl h-full w-full" /> {/* Image fills the container */}
+                <Image src={imgUrl} alt="image" fill className="rounded-tr-xl rounded-tl-xl w-full object-fill " /> {/* Image fills the container */}
             </div>
             <div className="absolute top-[268px] flex flex-col justify-between w-full h-1/2 p-4">
                 {/* Date positioned just below the image */}

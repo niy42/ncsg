@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import dynamic from 'next/dynamic';
 import 'aos/dist/aos.css';
 import AosInitializer from "@/app/aos";
@@ -8,9 +8,6 @@ import folas from '@/public/assets/folas.jpg';
 import fola from '@/public/assets/fola.jpg';
 import { FiActivity } from "react-icons/fi";
 import { useEffect, useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useSwipeable } from 'react-swipeable';
-import { useMedia } from 'use-media';
 
 const dancingScript = Dancing_Script({
     subsets: ["latin"],
@@ -32,43 +29,58 @@ const data: Data[] = [
     { imgUrl: folas, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NCSG’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm`, href: "/healthcare" },
 ];
 
-const Blog = () => {
-    const [videoUrl, setVideoUrl] = useState<string>("https://youtu.be/0c2rpE4I27Y");
+const Blogfirst = () => {
+    const [videoUrl, setVideoUrl] = useState<string>("");
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [showSwipeHint, setShowSwipeHint] = useState(false); // Initial state for showing the hint
-    const showDuration = 50000; // 50 seconds - duration to show the hint
-    const hideDuration = 5000; // 5 seconds - duration to hide the hint
-    const mobileView = useMedia({ maxWidth: 550 });
+    const [showSwipeHint, setShowSwipeHint] = useState(true); // Flag for swipe hint
+    const [startTouchX, setStartTouchX] = useState(0); // Start position of touch
+    const [endTouchX, setEndTouchX] = useState(0); // End position of touch
+    const url = "https://youtu.be/0c2rpE4I27Y";
 
     useEffect(() => {
-        // This interval shows the swipe hint, then hides it for a while, and repeats the cycle
-        const cycleInterval = setInterval(() => {
-            setShowSwipeHint(true); // Show the swipe hint
+        const timer = setTimeout(() => setShowSwipeHint(false), 5000); // Hide after 5 seconds
+        return () => clearTimeout(timer);
+    }, []);
 
-            // Hide it after 'showDuration' time
-            setTimeout(() => {
-                setShowSwipeHint(false); // Hide the swipe hint after the specified duration
-            }, showDuration);
+    useEffect(() => {
+        setVideoUrl(url);
 
-        }, showDuration + hideDuration); // Cycle interval (time for showing + hiding)
+        // Change article every 10 seconds
+        const intervalId = setInterval(() => {
+            setCurrentIndex(prevIndex => (prevIndex + 1) % data.length);
+        }, 10000); // 10000ms = 10 seconds
 
-        return () => clearInterval(cycleInterval); // Clean up the interval when the component is unmounted
-    }, []); // Empty dependency array to ensure this effect runs only once on mount/*
+        return () => clearInterval(intervalId); // Cleanup on component unmount
+    }, []);
 
-    const handleSwipe = (direction: 'left' | 'right') => {
-        setCurrentIndex((prevIndex) =>
-            direction === 'left'
-                ? (prevIndex === 0 ? data.length - 1 : prevIndex - 1)
-                : (prevIndex + 1) % data.length
-        );
+    // Detect swipe direction
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setStartTouchX(e.touches[0].clientX); // Store the starting touch position
     };
 
-    // Use react-swipeable for handling swipe gestures
-    const handlers = useSwipeable({
-        onSwipedLeft: () => handleSwipe('right'),  // Swipe left to show next
-        onSwipedRight: () => handleSwipe('left'), // Swipe right to show previous
-        trackMouse: true, // Track mouse for swipe on desktop
-    });
+    const handleTouchMove = (e: React.TouchEvent) => {
+        setEndTouchX(e.touches[0].clientX); // Track the touch move position
+    };
+
+    const handleTouchEnd = () => {
+        if (startTouchX - endTouchX > 50) {
+            // Swiped left, go to next article
+            nextSlide();
+        } else if (endTouchX - startTouchX > 50) {
+            // Swiped right, go to previous article
+            prevSlide();
+        }
+    };
+
+    // Slide to the next article
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    };
+
+    // Slide to the previous article
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
+    };
 
     return (
         <>
@@ -79,7 +91,6 @@ const Blog = () => {
                         <h2 className="text-xl font-semibold text-white">Our Activities</h2>
                         <FiActivity className="text-2xl" />
                     </div>
-
                     <div className="rounded-2xl grid grid-cols-1 xl:grid-cols-2 gap-8 w-full items-center justify-center">
                         <div className="relative flex flex-col space-y-4">
                             <div className="flex flex-col mb-8">
@@ -100,72 +111,51 @@ const Blog = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div className="flex flex-col w-full" data-aos='fade-right'>
-                            {showSwipeHint && mobileView && (
-                                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-transparent text-white py-2 px-4 rounded-lg shadow-lg z-10 flex flex-col items-center">
-                                    {/*<p className="text-center mb-2">Swipe left or right to navigate</p>*/}
-
-                                    {/* SVG Swipe Hint Animation */}
-                                    <div className="animate-pulse mt-20">
-                                        <img src="/assets/transhand.gif" alt="swipelogo" />
-                                    </div>
-                                </div>
-                            )}
-
                             {/*Large Screens*/}
-                            <div className="grid max-md:hidden sm:grid-cols-2 h-[520px] gap-4 mb-5">
+                            <div className="grid max-grid-cols-1 max-md:hidden sm:grid-cols-2 h-[520px] max-lg:gap-2 gap-4 mb-5">
                                 {data.map(({ title, imgUrl, date, classname, href }, index) => (
-                                    <Article
-                                        key={index}
-                                        imgUrl={imgUrl}
-                                        date={date}
-                                        title={title}
-                                        classname={`${classname} min-w-full`}
-                                        href={href}
-                                    />
+                                    <Article key={index} imgUrl={imgUrl} date={date} title={title} classname={`${classname} min-w-full`} href={href} />
                                 ))}
                             </div>
 
-                            {/*Small Screens (Swipeable Articles)*/}
+                            {/*Small Screens*/}
                             <div
-                                {...handlers}  // Attach swipe handlers here
-                                className="grid grid-cols-1 md:hidden sm:grid-cols-2 h-[520px] gap-4 mb-5"
+                                className="relative"
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
                             >
-                                <Article
-                                    key={data[currentIndex].title}
-                                    imgUrl={data[currentIndex].imgUrl}
-                                    date={data[currentIndex].date}
-                                    title={data[currentIndex].title}
-                                    classname={`${data[currentIndex].classname} min-w-full`}
-                                    href={data[currentIndex].href}
-                                />
-
-                                {/*Swipe Navigation Arrows*/}
-                                <div className="flex justify-between items-center mt-4">
-                                    <button
-                                        onClick={() => handleSwipe('left')}
-                                        className="p-4 text-white bg-gray-700 hover:bg-gray-800 rounded-full"
-                                    >
-                                        <FaChevronLeft size={24} />
-                                    </button>
-
-                                    <button
-                                        onClick={() => handleSwipe('right')}
-                                        className="p-4 text-white bg-gray-700 hover:bg-gray-800 rounded-full"
-                                    >
-                                        <FaChevronRight size={24} />
-                                    </button>
+                                <div className="grid grid-cols-1 md:hidden sm:grid-cols-2 h-[520px] gap-4 mb-5">
+                                    <Article
+                                        key={data[currentIndex].title}
+                                        imgUrl={data[currentIndex].imgUrl}
+                                        date={data[currentIndex].date}
+                                        title={data[currentIndex].title}
+                                        classname={`${data[currentIndex].classname} min-w-full`}
+                                        href={data[currentIndex].href}
+                                    />
                                 </div>
+                                {/* Left & Right Navigation Buttons */}
+                                <button
+                                    onClick={prevSlide}
+                                    className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                                >
+                                    &#8249;
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                                >
+                                    &#8250;
+                                </button>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </section>
         </>
     );
-}
+};
 
-export default Blog;
+export default Blogfirst;

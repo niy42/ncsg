@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Link from "next/link";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { HiMenuAlt2 } from "react-icons/hi";
 
 interface SubNavLink {
     title: string;
@@ -67,29 +68,29 @@ const Header: React.FC = () => {
 
                 {/* Mobile Menu Toggle */}
                 <div className="md:hidden relative">
-                    <div className="absolute top-[-18px] right-4 ">
+                    <div className="relative -top-2 right-4">
                         {toggleMenu ? (
                             <RiCloseLine
-                                fontSize={26}
+                                fontSize={24}
                                 onClick={() => setToggleMenu(false)}
-                                className="text-white cursor-pointer"
+                                className="cursor-pointer"
                             />
                         ) : (
                             <RiMenu3Line
-                                fontSize={26}
+                                fontSize={24}
                                 onClick={() => setToggleMenu(true)}
-                                className="text-white cursor-pointer"
+                                className="cursor-pointer"
                             />
                         )}
                     </div>
-                    <div className={`flex flex-col items-end justify-start h-fit mobile-nav ${toggleMenu ? "active" : ""} ${showBorder ? "show-border" : ""}`}>
+                    <div className={`flex flex-col items-end justify-start h-fit mobile-nav ${toggleMenu ? "active" : ""} ${bg ? "" : ""}`}>
                         <div className="py-3 px-5 hover:bg-gray-700 w-full rounded-xl">
-                            <Link legacyBehavior href={''} >
+                            <Link legacyBehavior href={'#'}>
                                 <a className="block text-xs font-light hover:text-gray-400">Home</a>
                             </Link>
                         </div>
                         {mobileNav.map(({ title, url, subNavLinks }, index) => (
-                            <div key={index} className="py-3 px-5 hover:bg-gray-700 w-full rounded-xl">
+                            <div key={title + index} className="py-3 px-5 hover:bg-gray-700 w-full rounded-xl">
                                 <a
                                     onClick={() => handleToggleMenu(index)}
                                     className="flex w-full justify-between items-center text-white hover:text-gray-300 transition-colors duration-300 whitespace-nowrap cursor-pointer"
@@ -100,9 +101,9 @@ const Header: React.FC = () => {
                                     </span>
                                 </a>
                                 {openIndex === index && (
-                                    <div className="pl-4 mt-2 transition-all duration-300 ease-out">
+                                    <div className="pl-4 mt-2 transition-all transform translate-y-2 duration-300 ease-out">
                                         {subNavLinks.map(({ title, url }, subIndex) => (
-                                            <Link legacyBehavior key={subIndex} href={url}>
+                                            <Link legacyBehavior key={title + subIndex} href={url || '#'}>
                                                 <a className="block text-xs text-gray-300 hover:text-gray-100 py-1 whitespace-nowrap">{title}</a>
                                             </Link>
                                         ))}
@@ -110,27 +111,28 @@ const Header: React.FC = () => {
                                 )}
                             </div>
                         ))}
-                        <div className="py-3 px-5 w-full items-center justify-end cursor-pointer bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white font-light border border-pink-800 rounded-lg shadow-md transition-all duration-200">
-                            <Link legacyBehavior href={''} >
-                                <a className="block text-xs font-light hover:text-gray-400"><span className="hover:text-gray-300 transition-colors duration-300 bg-transparent">Take Action</span></a>
+                        <div className="py-3 px-5 sm:py-2 sm:px-4 w-full items-center justify-end cursor-pointer bg-orange-600 hover:bg-orange-700 active:bg-orange-800 text-white font-light border border-gray-800 rounded-lg shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg hover:animate-pulse">
+                            <Link legacyBehavior href={'#'}>
+                                <a className="block text-xs sm:text-sm md:text-base lg:text-lg font-light hover:text-gray-400" aria-label="Donate button">
+                                    <span className="hover:text-gray-300 transition-colors duration-300 bg-transparent">Donate</span>
+                                </a>
                             </Link>
                         </div>
-
                     </div>
                 </div>
-
                 {/* Desktop Menu */}
                 <div className={`items-center hidden md:flex justify-between space-x-4 ${bg ? 'text-white' : 'text-black'}`}>
                     <Nav fixedBg={bg} />
                 </div>
+
                 <div
-                    className="max-md:hidden flex w-fit items-center justify-end cursor-pointer bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white font-light py-2 px-4 border border-pink-800 rounded-lg shadow-md transition-all duration-200"
+                    className="max-md:hidden hover:scale-105 hover:shadow-lg hover:animate-pulse flex w-fit items-center justify-end cursor-pointer bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white font-light py-2 px-4 border border-pink-800 rounded-lg shadow-md transition-all duration-200"
                     onClick={() => console.log("Button clicked")}
                 >
-                    <span className="hover:text-gray-300 transition-colors duration-300 bg-transparent">Take Action</span>
+                    <span className="hover:text-gray-300 transition-colors duration-300 bg-transparent">Donate</span>
                 </div>
             </nav>
-        </header>
+        </header >
     );
 };
 
