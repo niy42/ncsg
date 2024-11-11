@@ -4,8 +4,7 @@ import 'aos/dist/aos.css';
 import AosInitializer from "@/app/aos";
 import Article from "../utils/Article";
 import { Dancing_Script } from "next/font/google";
-import folas from '@/public/assets/folas.jpg';
-import fola from '@/public/assets/fola.jpg';
+import { fola, aged } from "@/public/assets/index";
 import { FiActivity } from "react-icons/fi";
 import { useEffect, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -29,7 +28,7 @@ interface Data {
 
 const data: Data[] = [
     { imgUrl: fola, date: "Apr 08, 2024", title: "Your Child’s After-School Haven: Expert Supervision, Engaging Activities, and Delicious Meals", classname: `${dancingScript.className} text-sm`, href: "/deliciouscare" },
-    { imgUrl: folas, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NCSG’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm`, href: "/healthcare" },
+    { imgUrl: aged, date: "Feb 12, 2024", title: "Leading the Way in Dementia Care: NCSG’s Vision for Compassionate and Innovative Support", classname: `${dancingScript.className} text-sm`, href: "/healthcare" },
 ];
 
 const Blog = () => {

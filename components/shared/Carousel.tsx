@@ -61,11 +61,11 @@ const Carousel = ({ images }: imagesProps) => {
                 >
                     <SlArrowRightCircle />
                 </div>
-                <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 flex">
+                <div className="absolute bottom-14 md:bottom-4 z-20 left-1/2 transform -translate-x-1/2 flex">
                     {images.map((_, index) => (
                         <div
                             key={index}
-                            className={`h-2 w-2 rounded-full mx-1 cursor-pointer transition-transform ease-linear duration-300 ${index === currentIndex ? 'bg-blue-800' : 'bg-gray-200 hover:bg-gray-500 '}`}
+                            className={`h-2 w-2 rounded-full mx-1 cursor-pointer transition-transform ease-linear duration-300 ${index === currentIndex ? 'bg-gray-600' : 'bg-gray-200 hover:bg-gray-500 '}`}
                             onClick={() => setCurrentIndex(index)}
                         />
 
@@ -73,8 +73,6 @@ const Carousel = ({ images }: imagesProps) => {
                 </div>
             </div>
         </div >
-
-
     );
 };
 

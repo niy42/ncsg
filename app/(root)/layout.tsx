@@ -13,7 +13,7 @@ import Design from "../design";
 import Footer from "@/components/shared/Footer";
 import Avatar from "@/components/utils/Avatar";
 import Cta from "@/components/shared/Cta";
-import { group1, group, onions, food1, strawb } from "@/public/assets";
+import { group1, group, onions, food1, nlogo } from "@/public/assets";
 import Roller from "@/components/shared/Roller";
 import { StaticImageData } from "next/image";
 
@@ -34,11 +34,11 @@ export type imagesProps = {
 }
 
 const imageObjects: Props[] = [
-  { title: `Caring for others ${"\n"} is the greatest gift you can give`, image: hand },
+  { title: `Caring for others ${"\n"} is the greatest gift you can give`, image: nlogo },
   { title: "Together, we uplift those who care", image: hand },
-  { title: "Empathy and support build stronger communities", image: hand },
+  { title: "Empathy and support build stronger communities", image: nlogo },
   { title: `Every caregiver ${"\n"} deserves a caring community`, image: hand },
-  { title: "Your strength inspires us all", image: hand }
+  { title: "Your strength inspires us all", image: nlogo }
 ];
 
 export type Photos = {

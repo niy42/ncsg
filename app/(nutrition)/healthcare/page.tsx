@@ -65,7 +65,7 @@ export default function Healthcare() {
                         <li>Support for families through counseling, education, and resources to cope with dementia-related challenges.</li>
                     </ul>
                 </div>
-                <img className="mt-6 w-full h-auto rounded-lg shadow-lg" src="/path/to/intro-image.jpg" alt="Dementia Caregiving" />
+                <img className="mt-6 w-full h-full md:w-1/2 md:h-1/4 rounded-lg shadow-lg" src="/assets/folas.jpg" alt="Dementia Caregiving" />
             </section>
 
             {/* Section 2: What We Do */}
@@ -76,13 +76,13 @@ export default function Healthcare() {
                     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 className="text-xl font-semibold text-gray-300">Specialized Dementia Care</h3>
                         <p className="mt-2 text-gray-400">We offer tailored care programs to meet the unique needs of each individual with dementia, ensuring their comfort, safety, and dignity at every stage of their journey.</p>
-                        <img className="mt-4 w-full h-48 object-cover rounded-lg" src="/path/to/care-image.jpg" alt="Dementia Care" />
+                        <img className="mt-4 w-full h-48 object-cover rounded-lg" src="/assets/specialcare.jpeg" alt="Dementia Care" />
                     </div>
                     {/* Service 2 */}
                     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 className="text-xl font-semibold text-gray-300">Family Support & Education</h3>
                         <p className="mt-2 text-gray-400">We offer comprehensive support for families, providing education, emotional support, and resources to help them navigate the challenges of dementia care.</p>
-                        <img className="mt-4 w-full h-48 object-cover rounded-lg" src="/path/to/family-support-image.jpg" alt="Family Support" />
+                        <img className="mt-4 w-full h-48 object-cover rounded-lg" src="/assets/demcare.jpeg" alt="Family Support" />
                     </div>
                 </div>
             </section>
